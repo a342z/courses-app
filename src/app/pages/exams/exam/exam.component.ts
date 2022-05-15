@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ApiService } from 'src/app/services/api.service';
 
 @Component({
   selector: 'app-exam',
@@ -7,10 +8,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ExamComponent implements OnInit {
   isShown: boolean = false;
-  constructor() {}
+ 
+  constructor(private apiService: ApiService){}
+
   toggle() {
     this.isShown = !this.isShown;
     console.log(this.isShown);
   }
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    console.log("ng on init")
+    this.apiService.getQuizById(1).subscribe(
+      (res)=> console.log(res))
+  }
 }
