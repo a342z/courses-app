@@ -7,7 +7,7 @@
       <div class="quiz-title">
         <span class="number">0.1:</span>
         <span class="title"
-          >An introduction to course from the interaction design foundation
+          >{{quiz?.Title}}
         </span>
         <span class="time">(37 mins)</span>
       </div>
@@ -24,48 +24,27 @@
         <!-- <span class="svg" style="mask: url(assets/images/Vector.svg) no-repeat center" ></span> -->
         <!-- <img src="assets/images/Vector.svg" alt="" /> -->
       </div>
-      <div class="questionswrapper" [ngClass]="isShown ? 'active' : ''">
+      <div class="questionswrapper" [ngClass]="isShown ? 'active' : ''"  *ngFor="let question of quiz?.Questions;let i=index">
         <div class="question">
           <h4>
-            <span>0.1</span>
+            <span>{{"0."+i}}</span>
             <span class="question-title">
-              What sholud I do if i do not receive a responce?
+             {{question?.Title}}
             </span>
           </h4>
-          <div class="mcq">
+          <div class="mcq" *ngFor="let answer of question.Answers">
             <div>
-              <label for="firstone">
-                For any aspirants of JEE, NEET, CBSE, ICSE or other board
-                <input type="radio" id="firstone" name="answer-question-one" />
+              <label for="{{answer.Id}}">
+                {{answer.Text}}
+                <input type="radio" id="{{answer.Id}}" name="answer-question-one" />
                 <span class="checkmark"></span>
               </label>
             </div>
 
-            <div>
-              <label for="secondone">
-                For any aspirants of JEE, NEET, CBSE, ICSE or other board
-                <input type="radio" id="secondone" name="answer-question-one" />
-                <span class="checkmark"></span>
-              </label>
-            </div>
-
-            <div>
-              <label for="thirdone">
-                For any aspirants of JEE, NEET, CBSE, ICSE or other board
-                <input type="radio" id="thirdone" name="answer-question-one" />
-                <span class="checkmark"></span>
-              </label>
-            </div>
-            <div>
-              <label for="fourthone">
-                For any aspirants of JEE, NEET, CBSE, ICSE or other board
-                <input type="radio" id="fourthone" name="answer-question-one" />
-                <span class="checkmark"></span>
-              </label>
-            </div>
+            
           </div>
         </div>
-        <div class="question">
+        <!-- <div class="question">
           <h4>
             <span>0.1</span>
             <span class="question-title">
@@ -129,8 +108,8 @@
                 <span class="checkmark"></span
               ></label>
             </div>
-          </div>
-        </div>
+          </div> -->
+        <!-- </div> -->
       </div>
     </div>
   </div>

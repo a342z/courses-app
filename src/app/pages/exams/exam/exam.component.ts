@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Quiz } from 'src/app/models/quiz';
 import { ApiService } from 'src/app/services/api.service';
 
 @Component({
@@ -8,6 +9,7 @@ import { ApiService } from 'src/app/services/api.service';
 })
 export class ExamComponent implements OnInit {
   isShown: boolean = false;
+  quiz:any ;
  
   constructor(private apiService: ApiService){}
 
@@ -16,8 +18,8 @@ export class ExamComponent implements OnInit {
     console.log(this.isShown);
   }
   ngOnInit(): void {
-    console.log("ng on init")
+  console.log("ng on init")
     this.apiService.getQuizById(1).subscribe(
-      (res)=> console.log(res))
+      (res)=> this.quiz =res)
   }
 }
