@@ -14,5 +14,12 @@ export class ApiService {
     return this.httpClient.get(`${this.apiURL}/SolveQuiz/GetQustions?id=${id}`);
   }
 
+  public getResult(ansIds:number[]){
+    return this.httpClient.post(`${this.apiURL}/api/Quizzes/Solve`,{
+      "forQuizId":1,
+      "selectedAnswerIds": ansIds
+    });
+  }
+
 
 }
